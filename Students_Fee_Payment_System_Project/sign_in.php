@@ -23,6 +23,7 @@
 
             if(mysqli_num_rows($result_Select)==1){
                 echo "Login Successfully<br>";
+                include 'registration.html';
             }else{
                 include 'login.html';
                 echo "Login Failed<br>";

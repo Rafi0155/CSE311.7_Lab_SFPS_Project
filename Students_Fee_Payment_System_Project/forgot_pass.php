@@ -1,5 +1,5 @@
 <?php
-include 'forgot_pass.html';
+
         $login_db =mysqli_connect("localhost", "root", "", "sfps_project" );
 
         if(!$login_db)
@@ -27,9 +27,11 @@ include 'forgot_pass.html';
                                         WHERE Email = '".$_email."'");
 
                 echo "Reset Successfully<br>";
+                include 'login.html';
                 
             }else{
                 echo "Reset Failed<br>";
+                include 'forgot_pass.html';
             }
 
         }
