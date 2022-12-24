@@ -30,26 +30,15 @@
                     <i class="uil uil-estate"></i>
                     <span class="link-name">Dahsboard</span>
                 </a></li>
-                <li><a href="#">
+                <li><a href="table.php">
                     <i class="uil uil-files-landscapes"></i>
                     <span class="link-name">Content</span>
                 </a></li>
-                <li><a href="table.php">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
+                <li><a href="enroll.php">
+                    <i class="uil uil-clipboard"></i>
+                    <span class="link-name">Enroll</span>
                 </a></li>
-                <li><a href="#">
-                    <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Like</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-share"></i>
-                    <span class="link-name">Share</span>
-                </a></li>
+                
             </ul>
             
             <ul class="logout-mode">
@@ -74,10 +63,19 @@
 	<section class="dashboard">
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-
+<style>
+    form .search-box button{
+        float: left;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+    }
+</style>
             <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
+                <form action="#" method="post">
+                <button type="submit"><i class="uil uil-search"></i></button>
+                <input type="text" name="search" placeholder="Search here...">
+                </form>
             </div>
             
             <img src="images/profile.jpg" alt="">
@@ -87,7 +85,7 @@
 
 	<section class="table-section">
 	<div class="table">
-			<h2>Student's Payment Data</h2>
+			<h2>Student Payment Data</h2>
 
 	<table>
 	
@@ -95,29 +93,41 @@
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
-			<th>Course code</th>
 			<th>Amount</th>
+			<th>Course code</th>
 			<th>Payment Status</th>
 			<th>Actions</th>
 		</tr>
 
-		<!-- The html template we will use in our loop -->
-		<tr>
-			<td> <!-- The products image --> </td>
-			<td> <!-- The products name --> </td>
-			<td> <!-- The products price --> </td>
-			<td> <!-- The products code --> </td>
-			<td> <!-- The products inventory --> </td>
-			<td>
+       
+        <?php
+			$db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			$sql = "SELECT ID, NAME, AMOUNT, COURSE_CODE, PAYMENT_STATUS FROM enrolment;";
+			$result =mysqli_query($db,$sql);
+			while($row = mysqli_fetch_assoc($result))
+			{
+
+            echo "<tr>";
+            echo "<td>" . $row["ID"] . "</td>";
+			echo "<td>" . $row["NAME"] . "</td>";
+            echo "<td>" . $row["AMOUNT"] . "</td>";
+            echo "<td>" . $row["COURSE_CODE"] . "</td>";
+            echo "<td>" . $row["PAYMENT_STATUS"] . "</td>";
+            echo "<td>";?>
 				<!-- Edit actions -->
 				<select name="actions" id="actions">
-					<option value="">Select action</option>
+					<option value="" disabled selected hidden>Select action</option>
 					<option value="remove">Remove</option>
 					<option value="edit">Edit</option>
-					<option value="sold-out">Sold out</option>
 				</select>
-			</td>
-		</tr>
+                <?php
+			echo "</td>";
+            echo "</tr>";
+        ?>
+        <?php
+            }
+        ?>
+
 	</table>
 		</div>
 	</section>

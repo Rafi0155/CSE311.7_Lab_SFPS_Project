@@ -33,22 +33,11 @@
                     <i class="uil uil-files-landscapes"></i>
                     <span class="link-name">Content</span>
                 </a></li>
-                <li><a href="#">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
+                <li><a href="enroll.php">
+                    <i class="uil uil-clipboard"></i>
+                    <span class="link-name">Enroll</span>
                 </a></li>
-                <li><a href="#">
-                    <i class="uil uil-thumbs-up"></i>
-                    <span class="link-name">Like</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Comment</span>
-                </a></li>
-                <li><a href="#">
-                    <i class="uil uil-share"></i>
-                    <span class="link-name">Share</span>
-                </a></li>
+                
             </ul>
             
             <ul class="logout-mode">
@@ -94,17 +83,48 @@
                     <div class="box box1">
                         <i class="uil uil-clipboard"></i>
                         <span class="text">Total Registration</span>
-                        <span class="number">50,120</span>
+
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT ID FROM enrolment;";
+			            $result =mysqli_query($db,$sql);
+                        $i = 0;
+                        while($row = mysqli_fetch_assoc($result)){
+                            $i++;
+                        }
+                         ?>
+
+                        <span class="number"><?php echo $i ?></span>
                     </div>
                     <div class="box box2">
                         <i class="uil uil-check-circle"></i>
                         <span class="text">Successful Payment</span>
-                        <span class="number">20,120</span>
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT ID FROM enrolment WHERE PAYMENT_STATUS = 1;";
+			            $result =mysqli_query($db,$sql);
+                        $i = 0;
+                        while($row = mysqli_fetch_assoc($result)){
+                            $i++;
+                        }
+                         ?>
+
+                        <span class="number"><?php echo $i ?></span>
                     </div>
                     <div class="box box3">
                         <i class="uil uil-exclamation-triangle"></i>
                         <span class="text">Incomplete Payment</span>
-                        <span class="number">10,120</span>
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT ID FROM enrolment WHERE PAYMENT_STATUS = 0;";
+			            $result =mysqli_query($db,$sql);
+                        $i = 0;
+                        while($row = mysqli_fetch_assoc($result)){
+                            $i++;
+                        }
+                         ?>
+
+                        <span class="number"><?php echo $i ?></span>
                     </div>
                 </div>
             </div>
@@ -118,53 +138,70 @@
                 <div class="activity-data">
                     <div class="data names">
                         <span class="data-title">Name</span>
-                        <span class="data-list">Prem Shahi</span>
-                        <span class="data-list">Deepa Chand</span>
-                        <span class="data-list">Manisha Chand</span>
-                        <span class="data-list">Pratima Shahi</span>
-                        <span class="data-list">Man Shahi</span>
-                        <span class="data-list">Ganesh Chand</span>
-                        <span class="data-list">Bikash Chand</span>
+
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT NAME FROM enrolment ORDER BY ENROLL_DATE DESC;";
+			            $result =mysqli_query($db,$sql);
+			            while($row = mysqli_fetch_assoc($result))
+			            {?>
+                            <span class="data-list"><?php echo $row["NAME"]; ?></span> <?php
+                        }
+                            ?>
+
+                        
                     </div>
                     <div class="data email">
                         <span class="data-title">Email</span>
-                        <span class="data-list">premshahi@gmail.com</span>
-                        <span class="data-list">deepachand@gmail.com</span>
-                        <span class="data-list">prakashhai@gmail.com</span>
-                        <span class="data-list">manishachand@gmail.com</span>
-                        <span class="data-list">pratimashhai@gmail.com</span>
-                        <span class="data-list">manshahi@gmail.com</span>
-                        <span class="data-list">ganeshchand@gmail.com</span>
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT EMAIL FROM enrolment ORDER BY ENROLL_DATE DESC;";
+			            $result =mysqli_query($db,$sql);
+			            while($row = mysqli_fetch_assoc($result))
+			            {?>
+                            <span class="data-list"><?php echo $row["EMAIL"]; ?></span> <?php
+                        }
+                            ?>
                     </div>
                     <div class="data joined">
                         <span class="data-title">Joined</span>
-                        <span class="data-list">2022-02-12</span>
-                        <span class="data-list">2022-02-12</span>
-                        <span class="data-list">2022-02-13</span>
-                        <span class="data-list">2022-02-13</span>
-                        <span class="data-list">2022-02-14</span>
-                        <span class="data-list">2022-02-14</span>
-                        <span class="data-list">2022-02-15</span>
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT ENROLL_DATE FROM enrolment ORDER BY ENROLL_DATE DESC;";
+			            $result =mysqli_query($db,$sql);
+			            while($row = mysqli_fetch_assoc($result))
+			            {?>
+                            <span class="data-list"><?php echo $row["ENROLL_DATE"]; ?></span> <?php
+                        }
+                            ?>
                     </div>
                     <div class="data type">
-                        <span class="data-title">Type</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
-                        <span class="data-list">New</span>
-                        <span class="data-list">Member</span>
+                        <span class="data-title">Gender</span>
+                        <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT GENDER FROM enrolment ORDER BY ENROLL_DATE DESC;";
+			            $result =mysqli_query($db,$sql);
+			            while($row = mysqli_fetch_assoc($result))
+			            {?>
+                            <span class="data-list"><?php echo $row["GENDER"]; ?></span> <?php
+                        }
+                            ?>
                     </div>
                     <div class="data status">
-                        <span class="data-title">Status</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
-                        <span class="data-list">Liked</span>
+                    <span class="data-title">Status</span>
+                    <?php
+			            $db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			            $sql = "SELECT PAYMENT_STATUS FROM enrolment ORDER BY ENROLL_DATE DESC;";
+			            $result =mysqli_query($db,$sql);
+			            while($row = mysqli_fetch_assoc($result))
+			            {?>
+                            <span class="data-list"><?php if($row["PAYMENT_STATUS"] == 0){
+                                echo "UNPAID";
+                            }else{
+                                echo "PAID";
+                            } ; ?></span> <?php
+                        }
+                            ?>
                     </div>
                 </div>
             </div>

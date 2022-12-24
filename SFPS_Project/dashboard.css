@@ -15,7 +15,7 @@
     --black-light-color: #707070;
     --border-color: #e6e5e5;
     --toggle-color: #DDD;
-    --box1-color: #4DA3FF;
+    --box1-color: #a3d0ff;
     --box2-color: #d2ffd2;
     --box3-color: #fde8ec;
     --title-icon-color: #fff;
@@ -88,7 +88,7 @@ nav .logo-image{
     min-width: 45px;
 }
 nav .logo-image img{
-    width: 40px;
+    width: 60px;
     object-fit: cover;
     border-radius: 50%;
 }
@@ -162,6 +162,7 @@ body.dark .nav-links li a:hover .link-name{
 }
 .menu-items .logout-mode{
     padding-top: 10px;
+    padding-bottom: 20px;
     border-top: 1px solid var(--border-color);
 }
 .menu-items .mode{

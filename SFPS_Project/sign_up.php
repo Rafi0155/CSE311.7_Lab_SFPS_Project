@@ -1,4 +1,5 @@
     <?php
+    
         $login_db =mysqli_connect("localhost", "root", "", "sfps_project" );
 
         if(!$login_db)
@@ -7,24 +8,27 @@
         }
         else
         {
-            echo "Database connected";
+            //echo "Database connected";
 
+        if(isset($_POST['email1'])){
         $_name = $_POST['text'];
-        $_email = $_POST['email'];
-        $_pass = $_POST['pswd'];
+        $_email = $_POST['email1'];
+        $_pass = $_POST['pswd1'];
  
         $sql_Insert = "INSERT INTO login_db(Email, User_Name, User_Password) 
                         VALUES ('$_email', '$_name', '$_pass')";
-        $result_Insert = mysqli_query($login_db, $sql_Insert);
 
-        if($result_Insert)
-        {
-            echo "Information Inserted <br>"; 
+        try{                
+        $result_Insert = mysqli_query($login_db, $sql_Insert);
+        $enroll_success = "Sign up Successful!";
+        }catch(Exception $e){
+            $enroll_error = "Email already exists!";
+            include('login.php');
+            header( "refresh:3; url=login.php" );
         }
-        else
-        {
-            echo "error" . mysqli_error($login_db);
-        }
-        header('Location:login.php');
+        //header('Location:login.php');
+        
+        
     }
+}
     ?>

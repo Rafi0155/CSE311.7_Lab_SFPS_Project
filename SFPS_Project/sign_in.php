@@ -10,8 +10,8 @@ if(!$login_db)
 else
 {
     //echo "database connected" . "<br>" ;
-}
 
+}
 if(isset($_POST['email'])){
     $_email = $_POST['email'];
     $_pass = $_POST['pswd'];
@@ -28,11 +28,10 @@ if(isset($_POST['email'])){
     }else{
         $error = "Sign in Failed!";
         //echo "Login Failed<br>";
+
     }
 
 }
-else
-{
-    //echo "error" . mysqli_error($login_db);
-}
+
+
 ?>

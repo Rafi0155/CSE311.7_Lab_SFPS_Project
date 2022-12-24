@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,13 @@
 <body>
     <div class="container" id="main">
         <div class="sign-up">
+            <?php
+            $enroll_error = null;
+            $enroll_success = null;
+            ?>
+        
             <form action="sign_up.php" method="post">
+            
                 <h1>Create Account</h1>
                 <div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -22,18 +27,29 @@
                 </div>
                 <p>or use your email for registration</p>
                 <input type="text" name="text" placeholder="Name" required="">
-                <input type="email" name="email" placeholder="Email" required="">
-                <input type="password" name="pswd" placeholder="Password" required="">
+                <input type="email" name="email1" placeholder="Email" required="">
+                <input type="password" name="pswd1" placeholder="Password" required="">
                 <button type="submit">Sign Up</button>
+                
+                <?php
+                    if($enroll_error != null){
+                ?> <style>.error{display:block}</style> <?php
+                    }
+                    if($enroll_success != null){
+                ?> <style>.success{display:block}</style> <?php
+                    }
+                ?>
+                
+                <p class="error reset-error">
+                <?php echo $enroll_error; ?>
+                </p>
+                <p class="success">
+                <?php echo $enroll_success; ?>
+                </p>
             </form>
         </div>
         <div class="sign-in">
         <?php require("sign_in.php"); ?>
-        <?php
-        if($error != null){
-            ?> <style>.error{display:block}</style> <?php
-        }
-        ?>
             <form action="" method="post">
                 <h1>Sign in</h1>
                 <div class="social-container">
@@ -46,6 +62,13 @@
                 <input type="password" name="pswd" placeholder="Password" required="">
                 <a href="forgot_pass_index.php">Forget your Password?</a>
                 <button type="submit" name="sign-in" value="Sign In">Sign In</button>
+
+               
+                <?php
+                if($error != null){
+                    ?> <style>.error{display:block}</style> <?php
+                }
+                ?>
 
                 <p class="error">
                     <?php echo $error; ?>
