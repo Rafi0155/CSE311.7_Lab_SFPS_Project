@@ -8,7 +8,8 @@
         }
         else
         {
-            //echo "Database connected";
+            echo "Database connected";
+        }
 
         if(isset($_POST['email1'])){
         $_name = $_POST['text'];
@@ -23,12 +24,13 @@
         $enroll_success = "Sign up Successful!";
         }catch(Exception $e){
             $enroll_error = "Email already exists!";
-            include('login.php');
-            header( "refresh:3; url=login.php" );
+            //include('login.php');
+            //header( "refresh:3; url=login.php" );
         }
-        //header('Location:login.php');
+        header('Location:login.php');
+        
         
         
     }
-}
+
     ?>

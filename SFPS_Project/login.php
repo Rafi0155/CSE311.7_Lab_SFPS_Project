@@ -18,6 +18,15 @@
             ?>
         
             <form action="sign_up.php" method="post">
+            <?php
+                include('sign_up.php');
+                    if($enroll_error != null){
+                ?> <style>.error{display:block}</style> <?php
+                    }
+                    if($enroll_success != null){
+                ?> <style>.success{display:block}</style> <?php
+                    }
+                ?>
             
                 <h1>Create Account</h1>
                 <div class="social-container">
@@ -31,14 +40,7 @@
                 <input type="password" name="pswd1" placeholder="Password" required="">
                 <button type="submit">Sign Up</button>
                 
-                <?php
-                    if($enroll_error != null){
-                ?> <style>.error{display:block}</style> <?php
-                    }
-                    if($enroll_success != null){
-                ?> <style>.success{display:block}</style> <?php
-                    }
-                ?>
+                
                 
                 <p class="error reset-error">
                 <?php echo $enroll_error; ?>
