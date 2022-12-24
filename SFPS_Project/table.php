@@ -63,17 +63,10 @@
 	<section class="dashboard">
         <div class="top">
             <i class="uil uil-bars sidebar-toggle"></i>
-<style>
-    form .search-box button{
-        float: left;
-        display: grid;
-        place-items: center;
-        border-radius: 50%;
-    }
-</style>
+
             <div class="search-box">
                 <form action="#" method="post">
-                <button type="submit"><i class="uil uil-search"></i></button>
+                <i class="uil uil-search"></i>
                 <input type="text" name="search" placeholder="Search here...">
                 </form>
             </div>
@@ -96,7 +89,7 @@
 			<th>Amount</th>
 			<th>Course code</th>
 			<th>Payment Status</th>
-			<th>Actions</th>
+			<th colspan="2">Actions</th>
 		</tr>
 
        
@@ -114,12 +107,9 @@
             echo "<td>" . $row["COURSE_CODE"] . "</td>";
             echo "<td>" . $row["PAYMENT_STATUS"] . "</td>";
             echo "<td>";?>
-				<!-- Edit actions -->
-				<select name="actions" id="actions">
-					<option value="" disabled selected hidden>Select action</option>
-					<option value="remove">Remove</option>
-					<option value="edit">Edit</option>
-				</select>
+
+                <a href="update.php?id=<?php echo $row['ID']; ?>"><i class="uil uil-edit"></i></a></td>
+                <td><a href="delete.php?id=<?php echo $row['ID']; ?>"><i class="uil uil-trash-alt"></i></a>
                 <?php
 			echo "</td>";
             echo "</tr>";
@@ -127,6 +117,13 @@
         <?php
             }
         ?>
+
+<script type="text/javascript">
+  function handleSelect(elm)
+  {
+     window.location = elm.value+".php";
+  }
+</script>
 
 	</table>
 		</div>
