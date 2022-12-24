@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SFPS Login</title>
+
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+</head>
+<body>
+    <div class="container" id="main">
+        <div class="sign-up">
+            <?php
+            $enroll_error = null;
+            $enroll_success = null;
+            ?>
+        
+            <form action="sign_up.php" method="post">
+            
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p>or use your email for registration</p>
+                <input type="text" name="text" placeholder="Name" required="">
+                <input type="email" name="email1" placeholder="Email" required="">
+                <input type="password" name="pswd1" placeholder="Password" required="">
+                <button type="submit">Sign Up</button>
+                
+                <?php
+                    if($enroll_error != null){
+                ?> <style>.error{display:block}</style> <?php
+                    }
+                    if($enroll_success != null){
+                ?> <style>.success{display:block}</style> <?php
+                    }
+                ?>
+                
+                <p class="error reset-error">
+                <?php echo $enroll_error; ?>
+                </p>
+                <p class="success">
+                <?php echo $enroll_success; ?>
+                </p>
+            </form>
+        </div>
+        <div class="sign-in">
+        <?php require("sign_in.php"); ?>
+            <form action="" method="post">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <p>or use your account</p>
+                <input type="email" name="email" placeholder="Email" required="">
+                <input type="password" name="pswd" placeholder="Password" required="">
+                <a href="forgot_pass_index.php">Forget your Password?</a>
+                <button type="submit" name="sign-in" value="Sign In">Sign In</button>
+
+               
+                <?php
+                if($error != null){
+                    ?> <style>.error{display:block}</style> <?php
+                }
+                ?>
+
+                <p class="error">
+                    <?php echo $error; ?>
+                </p>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected to us please login with your personal info</p>
+                    <button id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-right">
+                    <h1>Hello, User</h1>
+                    <p>Enter your personal details and start journey with us</p>
+                    <button id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const main = document.getElementById('main');
+
+        signUpButton.addEventListener('click',() =>{
+            main.classList.add("right-panel-active");
+        });
+        signInButton.addEventListener('click',() =>{
+            main.classList.remove("right-panel-active");
+        });
+    </script>
+</body>
+</html>

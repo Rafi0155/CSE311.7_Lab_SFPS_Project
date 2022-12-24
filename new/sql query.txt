@@ -1,0 +1,33 @@
+CREATE TABLE enrolment( ID INT PRIMARY KEY NOT NULL, 
+                       NAME VARCHAR(100) NOT NULL, 
+                       EMAIL CHAR(100) NOT NULL UNIQUE, 
+                       PHONE_NO INT NOT NULL, 
+                       DOB DATE NOT NULL, 
+                       GENDER CHAR(7) NOT NULL, 
+                       COURSE_CODE CHAR(20) NOT NULL,
+                       AMOUNT DOUBLE(8,3) NOT NULL, 
+                       ENROLL_DATE DATE NOT NULL,
+                       PAYMENT_STATUS BOOLEAN NOT NULL DEFAULT 0);
+
+INSERT INTO enrolment(ID, NAME,EMAIL, PHONE_NO, DOB, GENDER, COURSE_CODE, AMOUNT, ENROLL_DATE) 
+VALUES(10,'name','a@email.com', 0198, '2015/12/17', 'Male', 'cse311', 6000.000, '2015/12/17');
+
+SELECT ID, NAME, AMOUNT, COURSE_CODE, PAYMENT_STATUS FROM enrolment;
+
+
+ <?php
+			$db =mysqli_connect("localhost", "root", "", "sfps_project" );
+			$sql = "SELECT ID, NAME, AMOUNT, COURSE_CODE, PAYMENT_STATUS FROM enrolment;";
+			$result =mysqli_query($db,$sql);
+			while($row = mysqli_fetch_assoc($result))
+			{
+				echo "<tr>";
+				echo "<td>" . $row["ID"] . "</td>";
+				echo "<td>" . $row["NAME"] . "</td>";
+                echo "<td>" . $row["AMOUNT"] . "</td>";
+                echo "<td>" . $row["COURSE_CODE"] . "</td>";
+                echo "<td>" . $row["PAYMENT_STATUS"] . "</td>";
+                echo "<td>" . "<select name="actions" id="actions">"
+				echo "</tr>";
+			}
+        ?>
